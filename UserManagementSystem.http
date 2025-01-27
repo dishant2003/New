@@ -1,0 +1,54 @@
+@UserManagementSystem_HostAddress = http://localhost:5086
+
+###
+GET {{UserManagementSystem_HostAddress}}/api/users
+Authorization: securetoken
+
+###
+GET {{UserManagementSystem_HostAddress}}/api/users/1
+Authorization: securetoken
+
+###
+POST {{UserManagementSystem_HostAddress}}/api/users
+Content-Type: application/json
+Authorization: securetoken
+
+{
+    "id":4,
+    "name": "Doe",
+    "email": "doe@example.com"
+}
+
+### Invalid POST Request
+POST {{UserManagementSystem_HostAddress}}/api/users
+Content-Type: application/json
+Authorization: securetoken
+
+{
+    "id":4,
+    "name": "Doe",
+    "email": "invalidemail"
+}
+
+###
+PUT {{UserManagementSystem_HostAddress}}/api/users/4
+Content-Type: application/json
+Authorization: securetoken
+
+{
+    "id":4,
+    "name": "Doe",
+    "email": "doe@newdomain.com"
+}
+
+###
+DELETE {{UserManagementSystem_HostAddress}}/api/users/4
+Authorization: securetoken
+
+### Bad Request
+DELETE {{UserManagementSystem_HostAddress}}/api/users/10
+Authorization: securetoken
+
+###
+GET {{UserManagementSystem_HostAddress}}/division?numerator=10&denominator=0
+Authorization: securetoken
